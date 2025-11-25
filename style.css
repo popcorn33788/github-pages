@@ -1,0 +1,306 @@
+/* 
+    :root는 CSS 변수를 정의하는 곳입니다.
+    여기서 색상이나 크기를 정해두면 나중에 한꺼번에 바꾸기 편합니다.
+*/
+:root {
+    /* 색상 팔레트 */
+    --bg-color: #020e16;
+    /* 전체 배경색 (아주 연한 회색) */
+    --box-bg: #969696a1;
+    /* 박스 배경색 (흰색) */
+    --text-main: #2d3748;
+    /* 주요 글자색 (진한 회색) */
+    --text-sub: #718096;
+    /* 보조 글자색 (연한 회색) */
+
+    /* 포인트 색상 (그림의 색상 느낌 반영) */
+    --green-box: #68d391;
+    /* 로고, 이미지 박스 색상 */
+    --blue-box: #3edac5;
+    /* 제목, 내용 박스 색상 */
+    --yellow-box: #f6ad55;
+    /* 슬라이드 박스 색상 */
+
+    --border-radius: 12px;
+    /* 모서리 둥글기 */
+}
+
+/* 모든 요소의 텍스트 색을 검은색(#000)으로 */
+* {
+    color: #000;
+}
+
+/* 
+    * (별표)는 모든 요소를 선택합니다.
+    margin과 padding을 0으로 초기화하여 브라우저마다 다른 기본 여백을 없앱니다.
+    box-sizing: border-box는 테두리(border)나 안쪽여백(padding)이 너비에 포함되게 합니다.
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    /* 폰트 설정 */
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    display: flex;
+    /* 내용을 중앙에 배치하기 위해 Flexbox 사용 */
+    justify-content: center;
+    /* 가로 중앙 정렬 */
+    padding: 20px;
+    /* 화면 테두리와의 간격 */
+    min-height: 100vh;
+    /* 최소 높이를 화면 전체 높이로 설정 */
+}
+
+/* 메인 컨테이너 스타일 */
+.main-container {
+    width: 100%;
+    max-width: 800px;
+    /* 최대 너비 제한 (너무 넓어지지 않게) */
+    background-color: var(--box-bg);
+    padding: 2rem;
+    /* 안쪽 여백 */
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    /* 그림자 효과 */
+    border: 3px solid #ffffff;
+    /* 테두리 선 */
+
+    /* 내부 요소들을 세로로 배치 */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* 요소 사이의 간격 */
+}
+
+/* 
+    1. 헤더 영역 스타일 (Grid Layout 사용)
+    Grid는 바둑판처럼 구역을 나누는 데 아주 유용합니다.
+*/
+.header-section {
+    display: grid;
+    /* 
+        grid-template-columns: 
+        첫 번째 칸(100px) - 두 번째 칸(나머지 전부 1fr) - 세 번째 칸(100px) 
+    */
+    grid-template-columns: 100px 1fr 100px;
+    gap: 15px;
+    /* 칸 사이 간격 */
+    height: 80px;
+    /* 헤더 높이 고정 */
+}
+
+/* 공통 박스 스타일 (모서리 둥글게, 글자 가운데 정렬) */
+.box-logo,
+.box-title,
+.box-slider {
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-decoration: none;
+    /* 링크 밑줄 제거 */
+    color: rgb(0, 0, 0);
+    /* 글자색 흰색 */
+    text-align: center;
+    transition: transform 0.2s;
+    /* 움직임 부드럽게 */
+    
+}
+
+/* 로고 박스 */
+.box-logo {
+    background-color: var(--green-box);
+}
+
+.box-logo:hover {
+    transform: scale(1.05);
+    /* 마우스 올리면 살짝 커짐 */
+}
+
+/* 제목 박스 */
+.box-title {
+    background-color: var(--blue-box);
+    font-size: 1.5rem;
+    color: #000000;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* 슬라이드 박스 */
+.box-slider {
+    background-color: var(--yellow-box);
+    position: relative;
+    /* 내부 이미지들이 겹쳐있어야 하므로 relative 설정 */
+    overflow: hidden;
+    /* 박스 밖으로 나가는 이미지는 숨김 */
+    cursor: pointer;
+}
+
+/* 슬라이드 내부의 각 아이템 (링크+이미지) */
+.slide-item {
+    position: absolute;
+    /* 박스 안에 겹쳐서 배치 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    /* 기본적으로 투명해서 안 보임 */
+    transition: opacity 1s ease-in-out;
+    /* 투명도가 변할 때 1초 동안 부드럽게 */
+
+    /* 내용물 정렬 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--yellow-box);
+    /* 이미지가 로딩 안될 때 배경색 */
+}
+
+/* 현재 보여야 하는 슬라이드 */
+.slide-item.active {
+    opacity: 1;
+    /* 불투명하게 만들어서 보이게 함 */
+    z-index: 1;
+    /* 다른 것보다 위에 표시 */
+}
+
+.slide-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 이미지가 박스를 꽉 채우도록 조절 */
+}
+
+/* 
+    2. 이벤트 섹션 스타일 
+*/
+.event-section {
+    background-color: var(--blue-box);
+    color: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+.event-section h2 {
+    margin-bottom: 0.5rem;
+}
+
+/* 
+    3. 리스트 아이템 스타일 
+*/
+.list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.list-item {
+    display: grid;
+    /* 왼쪽(150px) - 오른쪽(나머지) */
+    grid-template-columns: 150px 1fr;
+    gap: 20px;
+}
+
+/* 리스트의 왼쪽 이미지 박스 */
+.item-image-box {
+    height: 150px;
+    background-color: var(--green-box);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.item-image-box:hover {
+    transform: scale(1.02);
+}
+
+/* 리스트의 오른쪽 내용 박스 */
+.item-content-box {
+    background-color: var(--blue-box);
+    /* 그림처럼 파란 배경 */
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.item-content-box h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.item-content-box p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.text-link {
+    color: rgb(6, 1, 247);
+    font-weight: bold;
+    text-decoration: underline;
+    align-self: flex-start;
+    /* 왼쪽 정렬 */
+}
+
+.text-link:hover {
+    opacity: 0.8;
+}
+
+/* 
+    모바일 반응형 (화면 폭이 600px 이하일 때)
+    Grid 구조를 깨고 세로로 길게 배치합니다.
+*/
+@media (max-width: 600px) {
+    .header-section {
+        grid-template-columns: 1fr 1fr;
+        /* 2칸으로 변경 */
+        height: auto;
+        grid-template-rows: auto auto;
+        /* 2줄이 될 수 있음 */
+    }
+
+    .box-title {
+        grid-column: 1 / -1;
+        /* 제목은 전체 너비 차지 */
+        order: -1;
+        /* 맨 위로 올림 */
+        height: 60px;
+    }
+
+    .box-logo,
+    .box-slider {
+        height: 80px;
+    }
+
+    .list-item {
+        grid-template-columns: 1fr;
+        /* 한 줄로 변경 */
+        gap: 10px;
+    }
+
+    .item-image-box {
+        height: 200px;
+        /* 모바일에서는 이미지를 좀 더 크게 */
+    }
+
+
+
+
+
+}

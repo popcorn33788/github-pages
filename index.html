@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head></head>
+<!-- 
+        meta 태그는 브라우저나 검색엔진에게 페이지의 정보를 알려주는 역할을 합니다.
+        charset="UTF-8": 전 세계 모든 언어를 문제없이 표시하기 위한 문자 인코딩 방식입니다.
+        viewport: 모바일 기기에서도 화면이 잘 보이도록 배율을 설정합니다.
+    -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>내 랜딩 페이지</title>
+
+<!-- 
+        구글 폰트(Outfit)를 불러오는 코드입니다. 
+        preconnect는 폰트 서버에 미리 연결하여 로딩 속도를 조금 더 빠르게 해줍니다.
+    -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- 우리가 작성한 스타일 시트(CSS)를 연결합니다. -->
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- 
+        main-container: 
+        모든 내용을 감싸는 가장 큰 상자입니다. 
+        화면 중앙에 정렬하고, 최대 너비를 제한하기 위해 사용합니다.
+    -->
+    <main class="main-container">
+
+        <!-- 
+            1. 헤더 영역 (Header Section)
+            그림의 맨 윗부분: [로고] [제목] [슬라이드] 순서로 배치됩니다.
+        -->
+        <header class="header-section">
+
+            <!-- 
+                로고 영역
+                <a> 태그는 클릭하면 다른 페이지로 이동하는 링크입니다.
+                href="#" 부분에 이동할 주소를 적습니다.
+            -->
+            <a href="https://www.weather.go.kr/" class="box-logo" target="_blank">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu6qdwF4RLzUqnQ2ZHDodAfvZ46PspOg6dnw&s" alt="로고" style="width: 100%; height: 100%; object-fit: contain;">
+            </a>
+
+            <!-- 
+                제목 영역
+                단순 텍스트이므로 <div>를 사용했습니다.
+            -->
+            <div class="box-title">
+                작업이 필요한 커뮤니티별 특징
+            </div>
+
+            <!-- 
+                슬라이드 영역 (Slider)
+                이미지가 7초마다 바뀌는 공간입니다.
+                각 이미지는 서로 다른 링크를 가질 수 있도록 <a> 태그로 감쌌습니다.
+            -->
+            <div class="box-slider">
+                <!-- 슬라이드 1: 첫 번째 이미지 (처음엔 이것만 보임 - active 클래스) -->
+                <a href="https://google.com" class="slide-item active" target="_blank">
+                    <!-- src에 이미지 주소를 넣으세요 -->
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdMRfPG0jDCgRXhVxPy6STfjlV-c7UrD9tAQ&s" alt="슬라이드1">
+                </a>
+
+                <!-- 슬라이드 2 -->
+                <a href="https://naver.com" class="slide-item" target="_blank">
+                    <img src="https://play-lh.googleusercontent.com/jYtnK__ibJh9emODIgTyjZdbKym1iAj4RfoVhQZcfbG-DuTSHR5moHVx9CQnqg1yoco9" alt="슬라이드2">
+                </a>
+
+                <!-- 슬라이드 3 -->
+                <a href="https://www.daum.net/" class="slide-item" target="_blank">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm-uCPPoWEDsQjRWs3MrM1nkrcqxygYAXbvg&s" alt="슬라이드3">
+                </a>
+
+                <!-- 슬라이드 4 -->
+                <a href="https://www.youtube.com/" class="slide-item" target="_blank">
+                    <img src="https://yt3.googleusercontent.com/phyigngHB_ILjVeVUjRK_1iyynHvSx_Zg6W9h6VutjUHpkJnhIi5_WtdbUNvoDuMIQD6JbUTQ9I=s900-c-k-c0x00ffffff-no-rj" alt="슬라이드4">
+                </a>
+
+                <!-- 슬라이드 5 -->
+                <a href="https://namu.wiki/" class="slide-item" target="_blank">
+                    <img src="https://play-lh.googleusercontent.com/0wq8uDxi9IeUNYArvunjWVwn4SXTZVnogf47uKmf9hLGwdKadenC4Zsqp9XsSk_oV8Pz" alt="슬라이드5">
+                </a>
+            </div>
+        </header>
+
+        <!-- 
+            2. 이벤트 공지 영역 (Event Section)
+            가로로 긴 박스 형태입니다.
+        -->
+        <section class="event-section">
+            <h2>커뮤니티 목록</h2>
+            <p>작업 진행중인 커뮤니티 목록입니다. <br> <a href="" class="text-link" >새로고침</a>으로 페이지를 최신화 하세요.</p>
+        </section>
+
+        <!-- 
+            3. 리스트 영역 (List Section)
+            이미지와 설명이 반복되는 목록입니다.
+        -->
+        <div class="list-container">
+
+            <!-- 리스트 아이템 1 -->
+            <article class="list-item">
+                <!-- 왼쪽: 이미지 (클릭 가능) -->
+                <a href="https://www.dcinside.com/" target="_blank" class="item-image-box">
+                    <img src="https://play-lh.googleusercontent.com/cL-tRMl6x0HCA3RO7vuWJ5bFkMZ_91Zp4Z9YwDDbaycrF1bQgmb7mTH8YRTMItzijPQ=w240-h480-rw" alt="DC인사이드" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </a>
+                <!-- 오른쪽: 설명 (텍스트) -->
+                <div class="item-content-box">
+                    <h3>DC인사이드</h3>
+                    <p>갤러리마다 성향과 연령대가 천차만별, 인구가 많은 1~3개 갤러리 활동필요</p>
+                    <!-- 텍스트에 링크 걸기 -->
+                    <a href="https://www.dcinside.com/" target="_blank" class="text-link">바로가기 &rarr;</a>
+                </div>
+            </article>
+
+            <!-- 리스트 아이템 2 (복사해서 내용만 바꾸세요) -->
+            <article class="list-item">
+                <a href="https://www.fmkorea.com/" target="_blank" class="item-image-box">
+                    <img src="https://i.namu.wiki/i/DXVSECK9Zj_u4Gn7qivjbnW-5j7NsWjUX0wmhrmaPX-maQnTAlZp0-tDo6ki02rrb200yZlPmdKSFgj3ExecVg.svg" alt="에펨코리아" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </a>
+                <div class="item-content-box">
+                    <h3>에펨코리아</h3>
+                    <p>축구가 메인인 30~50우파사이트, 포텐글 조회수가 매우 높은편</p>
+                    <a href="https://www.fmkorea.com/" target="_blank" class="text-link">바로가기 &rarr;</a>
+                </div>
+            </article>
+
+            <!-- 리스트 아이템 3 -->
+            <article class="list-item">
+                <a href="https://www.inven.co.kr/" target="_blank" class="item-image-box">
+                    <img src="https://play-lh.googleusercontent.com/8qSbt3gFUDvulAXJNuNQ6aJMLjMOzvhwLJ80BibJBWW69yC_tS_ayAlbXm8niq3wKJY" alt="인벤" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </a>
+                <div class="item-content-box">
+                    <h3>인벤</h3>
+                    <p>게임 커뮤니티지만 작업할 곳은 오픈이슈 갤러리, 30~50좌파사이트</p>
+                    <a href="https://www.inven.co.kr/" target="_blank" class="text-link">바로가기 &rarr;</a>
+                </div>
+            </article>
+            
+            <!-- 리스트 아이템 4 -->
+            <article class="list-item">
+                <a href="https://www.ilbe.com/" target="_blank" class="item-image-box">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4WothD_47uyygkK_hcFrGDV24110xh3XdKA&s" alt="일베저장소" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </a>
+                <div class="item-content-box">
+                    <h3>일베저장소</h3>
+                    <p>정치글 95%가 넘는 5060우파사이트, 유니크한 타겟이므로 작업필요</p>
+                    <a href="https://www.ilbe.com/" target="_blank" class="text-link">바로가기 &rarr;</a>
+                </div>
+            </article>
+
+            <!-- 리스트 아이템 5 -->
+            <article class="list-item">
+                <a href="https://bbs.ruliweb.com/" target="_blank" class="item-image-box">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHLxk_MfoT5fzardQ26Qj_qKM4FHbaeiAhDA&s" alt="루리웹" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </a>
+                <div class="item-content-box">
+                    <h3>루리웹</h3>
+                    <p>일본 게임-애니메이션 30~50좌파사이트, 구매율 높은 주요 타겟층</p>
+                    <a href="https://bbs.ruliweb.com/" target="_blank" class="text-link">바로가기 &rarr;</a>
+                </div>
+            </article>
+
+            <!-- 리스트 아이템 6 -->
+            <article class="list-item">
+                <a href="https://www.avdbs.com/" target="_blank" class="item-image-box">
+                    <img src="https://i.namu.wiki/i/X9gVFlO4pCRuem8unr67XCMWJo_aFL0VfHy_IZuqPzOP61b0zfw7pHnmMH5PxIgYPETcWN1qHi7R4S1prOi_zg.webp" alt="AVDBS" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </a>
+                <div class="item-content-box">
+                    <h3>AVDBS</h3>
+                    <p>AV배우 정보공유 사이트, 주제에 충실한 성관련 사이트이므로 작업필수</p>
+                    <a href="https://www.avdbs.com/" target="_blank" class="text-link">바로가기 &rarr;</a>
+                </div>
+            </article>
+
+            <!-- 리스트 아이템 7 -->
+            <article class="list-item">
+                <a href="https://mlbpark.donga.com/" target="_blank" class="item-image-box">
+                    <img src="https://app.jobbrain.co.kr/common/img/pages/rankc/3202.png" alt="MLB파크" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </a>
+                <div class="item-content-box">
+                    <h3>MLB파크</h3>
+                    <p>야구 사이트지만 정치글이 메인인 5060좌파사이트, 일베처럼 유니크한 타겟</p>
+                    <a href="https://mlbpark.donga.com/" target="_blank" class="text-link">바로가기 &rarr;</a>
+                </div>
+            </article>
+
+            <!-- 리스트 아이템 8 -->
+            <article class="list-item">
+                <a href="https://www.slrclub.com/" target="_blank" class="item-image-box">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2cMdxY1tswsk3GwDgPJRGhAK5S_U3tv1xrA&s" alt="SLR클럽" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </a>
+                <div class="item-content-box">
+                    <h3>SLR클럽</h3>
+                    <p>사진이 메인인 5060좌파사이트, MLB파크보다 비교적 온순한 편</p>
+                    <a href="https://www.slrclub.com/" target="_blank" class="text-link">바로가기 &rarr;</a>
+                </div>
+            </article>
+
+        </div>
+
+    </main>
+
+    <!-- 자바스크립트 파일 연결 (슬라이드 기능 등) -->
+    <script src="script.js"></script>
+</body>
+
+</html>
