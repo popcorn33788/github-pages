@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             console.log(currentIndex + '번 슬라이드로 변경됨');
 
-        }, 7000); // 7초마다 실행
+        }, 2000); // 7초마다 실행
     }
 });
+
